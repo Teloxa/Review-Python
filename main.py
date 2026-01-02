@@ -1,21 +1,24 @@
 #FreeCodeCamp - Introduction to python 
 
-# This progrmam demonstrater arrasys in python
+# =============================================================
+# EXERCISE: "Weekly Temperature Registry"
+# =============================================================
+#
+# Objective: Create a program that allows registering the 
+# temperature for each day of the week and then analyze the data.
+#
+# Instructions:
+#
+# 1. Create an empty list called temperatures.
+#
+# 2. Ask the user to enter the temperature for the 7 days 
+#    (you can use a for loop and input()).
+#
+# 3. After finishing the input, the program must display:
+#    - The highest temperature (use the max() function).
+#    - The lowest temperature (use the min() function).
+#    - The average temperature of the week.
+#    - How many days had a temperature greater than 25 degrees?
+#
+# =============================================================
 
-# 01 Creating an array
-numbers = [10, 20, 30, 40, 50]
-
-# 02 Add a new element at the end
-numbers.append(60)
-
-# 03 Insert an element at a specific position
-first_element = numbers[0]
-print(f" First element: {first_element}")
-
-# 04 Go through the array with a loop 
-print("Array elements:")
-for n in numbers:
-  print(n)
-
-# 05 show the length of the array
-print(f"Length of the array: {len(numbers)}")
