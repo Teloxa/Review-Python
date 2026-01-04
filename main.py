@@ -1,56 +1,75 @@
-#FreeCodeCamp - Introduction to python 
-# VISUAL EXERCISE: Task Management System with Arrays
+import tkinter as tk
+from tkinter import messagebox
 
-print("=" * 50)
-print("TASK MANAGEMENT SYSTEM")
-print("=" * 50)
+class TaskManagerApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Python Task Manager")
+        self.root.geometry("400x450")
 
-# 01 Create an initial array of tasks
-tasks = ["Study Python", "Exercise", "Read book"]
-print("\nInitial tasks:")
-for i, task in enumerate(tasks, 1):
-    print(f"   {i}. {task}")
+        # 01 Initial array of tasks
+        self.tasks = ["Study Python", "Exercise", "Read book"]
 
-# 02 Add new tasks at the end
-print("\nAdding new tasks...")
-tasks.append("Go to supermarket")
-tasks.append("Programming project")
-print("   Tasks added successfully")
+        # --- UI ELEMENTS ---
+        
+        # Title
+        self.label = tk.Label(root, text="My Task List", font=("Arial", 14, "bold"))
+        self.label.pack(pady=10)
 
-# 03 Show all current tasks
-print("\nComplete task list:")
-for i, task in enumerate(tasks, 1):
-    print(f"   {i}. {task}")
+        # Input field to add new tasks
+        self.task_entry = tk.Entry(root, width=30)
+        self.task_entry.pack(pady=5)
 
-# 04 Access specific elements
-print("\nAccessing specific tasks:")
-print(f"   First task: {tasks[0]}")
-print(f"   Last task: {tasks[-1]}")
-print(f"   Third task: {tasks[2]}")
+        # Buttons Frame
+        button_frame = tk.Frame(root)
+        button_frame.pack(pady=10)
 
-# 05 Insert a task at a specific position
-print("\nInserting priority task at position 2...")
-tasks.insert(1, "URGENT Task")
-print("   Task inserted")
+        # Add Button (corresponds to .append)
+        self.add_button = tk.Button(button_frame, text="Add Task", command=self.add_task)
+        self.add_button.grid(row=0, column=0, padx=5)
 
-# 06 Show current state
-print("\nCurrent system state:")
-print(f"   Total tasks: {len(tasks)}")
-print("\n   Updated list:")
-for i, task in enumerate(tasks, 1):
-    print(f"   {i}. {task}")
+        # Delete Button (corresponds to .pop)
+        self.delete_button = tk.Button(button_frame, text="Remove Selected", command=self.remove_task)
+        self.delete_button.grid(row=0, column=1, padx=5)
 
-# 07 Remove a completed task
-print("\nCompleting first task...")
-completed_task = tasks.pop(0)
-print(f"   Completed: {completed_task}")
+        # Listbox to display tasks
+        self.tasks_listbox = tk.Listbox(root, width=40, height=10)
+        self.tasks_listbox.pack(pady=10, padx=20)
 
-# 08 Final state
-print("\nFINAL STATE:")
-print(f"   Remaining tasks: {len(tasks)}")
-for i, task in enumerate(tasks, 1):
-    print(f"   {i}. {task}")
+        # Initialize the list display
+        self.update_listbox()
 
-print("\n" + "=" * 50)
-print("Exercise completed successfully!")
-print("=" * 50)
+    def update_listbox(self):
+        """Clears and re-populates the listbox from the array."""
+        self.tasks_listbox.delete(0, tk.END)  # Clear current view
+        for task in self.tasks:
+            self.tasks_listbox.insert(tk.END, task)
+
+    def add_task(self):
+        """Adds a new task using the .append() method."""
+        task_text = self.task_entry.get()
+        if task_text != "":
+            self.tasks.append(task_text)  # Array logic
+            self.update_listbox()         # UI update
+            self.task_entry.delete(0, tk.END) # Clear input
+        else:
+            messagebox.showwarning("Warning", "You must enter a task.")
+
+    def remove_task(self):
+        """Removes the selected task using the .pop() logic."""
+        try:
+            # Get the index of the selected item
+            selected_index = self.tasks_listbox.curselection()[0]
+            # Remove from our array
+            removed = self.tasks.pop(selected_index)
+            # Refresh UI
+            self.update_listbox()
+            messagebox.showinfo("Done", f"Task '{removed}' completed!")
+        except IndexError:
+            messagebox.showwarning("Warning", "Please select a task to remove.")
+
+# --- MAIN EXECUTION ---
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = TaskManagerApp(root)
+    root.mainloop()
