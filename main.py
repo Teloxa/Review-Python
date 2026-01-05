@@ -25,3 +25,28 @@ for i in range(5):
 def greet(person_name):
     return f"Hello, {person_name}!"
 print(greet(name))
+
+#exercise 6 - Lists
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+
+#exercise 7 - Dictionaries
+person = {"name": "Bob", "age": 25, "city": "New York"}
+for key, value in person.items():
+    print(f"{key}: {value}")
+
+#exercise 8 - Classes
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    def bark(self):
+        return f"{self.name} says Woof!"
+my_dog = Dog("Buddy", "Golden Retriever")
+print(my_dog.bark())
+
+#exercise 9 - File Handling - TASK FOR USER TO COMPLETE
+# with open("example.txt", "w") as file:
