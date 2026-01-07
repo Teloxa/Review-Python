@@ -49,8 +49,32 @@ my_dog = Dog("Buddy", "Golden Retriever")
 print(my_dog.bark())
 
 #exercise 9 - File Handling - TASK FOR USER TO COMPLETE
-# with open("example.txt", "w") as file:
-#     file.write("This is a sample text file.")
-# with open("example.txt", "r") as file:
-#     content = file.read()
-#     print(content)
+with open("example.txt", "w") as file:
+    file.write("This is a sample text file.")
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+#exercise 10 - Exception Handling
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero.")
+#exercise 11 - Modules and Packages
+import math
+print(f"The square root of 16 is {math.sqrt(16)}")
+
+#exercise 12 - List Comprehensions
+squares = [x**2 for x in range(10)]
+print(squares)
+
+#exercise 13 - Lambda Functions
+add = lambda x, y: x + y
+print(f"Sum of 5 and 3 is {add(5, 3)}")
+
+#exercise 14 - Map and Filter
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = list(map(lambda x: x**2, numbers))
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"Squared Numbers: {squared_numbers}")
+print(f"Even Numbers: {even_numbers}")
