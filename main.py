@@ -78,3 +78,13 @@ squared_numbers = list(map(lambda x: x**2, numbers))
 even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 print(f"Squared Numbers: {squared_numbers}")
 print(f"Even Numbers: {even_numbers}")
+
+
+#exercise 15 - Generators
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+for number in countdown(5):
+    print(number)   
+
