@@ -1,3 +1,8 @@
+""" Multiline strings can be written
+    using three "s, and are often used
+    as documentation.
+"""
+
 # This file contains an review of the basic syntax of python, including variables, data type, etc.
 
 def section_1():
